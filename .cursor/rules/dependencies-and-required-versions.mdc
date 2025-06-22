@@ -1,0 +1,27 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Rule: "Only explicitly approved dependencies and their exact versions are allowed"
+# Do not use any other versions or libraries not listed below — the environment may break
+# Approved dependencies (requirements.txt):
+# 
+# google-adk[database]==0.3.0
+# yfinance==0.2.56
+# psutil==5.9.5
+# litellm==1.66.3
+# google-generativeai==0.8.5
+# python-dotenv==1.1.0
+# google-cloud-aiplatform==1.92.0
+# google-cloud-storage==2.19.0
+# google-genai==1.14.0
+# gitpython==3.1.40
+# google-adk==0.5.0
+# mysql-connector-python==9.3.0
+# mysqlclient==2.2.0
+# Flask-MySQLdb==2.0.0
+#
+# Not allowed:
+# - Any version different from those listed above
+# - Any package not included in this list

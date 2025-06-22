@@ -1,0 +1,103 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+REGLAS CRÍTICAS PARA LEGISLINK EN LA HACKATHON ADK
+
+=== CATEGORÍA Y FOCO PRINCIPAL ===
+1. Categoría: Automatización de Procesos Complejos (Legal)
+   - Automatización de flujos legales internacionales
+   - Gestión de documentos con validación constitucional
+
+2. Orquestación Multiagente:
+   - 5 agentes especializados (CRM, RAG, Constitute, Document, Translation)
+   - Patrones ADK implementados:
+     Delegación (sub_agents en Manager)
+     Agentes como Herramientas (Document Agent para generación)
+     Flujos secuenciales/paralelos (Legal Document Generation)
+
+=== REQUISITOS TÉCNICOS OBLIGATORIOS ===
+3. Google Cloud Services:
+   Agent Engine (despliegue de agentes)
+   Vertex AI (RAG y Gemini 2.5)
+   Cloud SQL (MySQL)
+   Google Drive (gestión documental)
+   Cloud Run (backend Flask)
+
+4. Documentación técnica:
+   Diagrama de arquitectura (Mermaid)
+   README.md en inglés con:
+        * Descripción problema/solución 
+        * Explicación orquestación multiagente
+        * Instrucciones despliegue GCP (Terraform)
+
+=== ELEMENTOS DE ENTREGA ===
+5. Repositorio público:
+   /agents (estructura ADK válida)
+   /diagrams (archivo editable del diagrama)
+   /docs (explicación patrones orquestación)
+   requirements.txt (dependencias)
+
+6. Video demostrativo (3 min):
+   Mostrar funcionamiento REAL en GCP
+   Incluir subtítulos inglés
+   Enfocar interacciones multiagente
+   Usar #adkhackathon en descripción
+
+=== CRITERIOS DE EVALUACIÓN PRIORITARIOS ===
+7. Technical Implementation (50%):
+   Logging de interacciones entre agentes
+   Documentación de código con flujos
+   Tests unitarios (90% cobertura crítica)
+
+8.  Innovación (30%):
+    Mecanismo original: 
+        - Validación constitucional en tiempo real
+        - RAG optimizado para documentos legales
+        - Generación dinámica con control de versiones
+
+9. Excelencia en Demo (20%):
+   Video mostrar:
+        [Configuración GCP (Vertex AI, Agent Engine)
+        Ejecución flujo completo (generación documento)
+        Resultados tangibles (documento en Drive)
+
+=== BONUS (+1 PUNTO) ===
+10. Bonus:
+    a) Publicar blog/tutorial técnico:
+        - Capturas arquitectura ADK
+        - Explicación patrones multiagente LegisLink
+        - Enlace repositorio y #adkhackathon
+    b) Contribución a ADK:
+        Propuesta: Módulo validación legal (google.adk.legal)
+        Dataset: 10K+ documentos legales etiquetados
+    c) Uso avanzado Google Cloud (Vertex AI, Cloud SQL, Agent Engine)
+
+11. Validación final:
+    Probar despliegue en cuenta GCP nueva
+    Verificar video ≤3 min (inglés)
+    Asegurar inglés en documentación
+    Confirmar región (LatAm) en submission
+
+ACCIONES CRÍTICAS:
+1. Completar suite de tests (90% cobertura)
+2. Grabar video demostración (3 min) con:
+   - Configuración GCP
+   - Flujo generación documento
+   - Validación constitucional
+   - Subtítulos inglés
+3. Publicar blog post técnico
+4. Documentar métricas de desempeño:
+   - Latencia generación documentos
+   - Precisión validación constitucional
+   - Recall@5 RAG
+
+# Crear repositorio de Docker
+gcloud artifacts repositories create legislink-repo \
+  --repository-format=docker \
+  --location=us-central1 \
+  --description="Docker repository for LegisLink Pro"
+
+# Configurar Docker para usar el repositorio
+gcloud auth configure-docker us-central1-docker.pkg.dev

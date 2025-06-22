@@ -1,0 +1,23 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Rule: "The ADK agentic architecture will break if this exact structure is not followed"
+# Each agent folder must match its main file name (e.g., agent_x/agent_x.py)
+# If the agent uses tools, it must have a tools/ directory inside its folder
+#
+# parent_folder/
+# ├── root_agent/
+# │   ├── root_agent.py          # Must define root_agent
+# │   ├── __init__.py            # Must import root_agent.py
+# │   └── tools/                 # (Optional) Tools used by root_agent
+# └── sub_agents/
+#     ├── agent_x/
+#     │   ├── agent_x.py         # Must define an `agent` object
+#     │   ├── __init__.py        # Must import agent_x.py
+#     │   └── tools/             # (Optional) Agent-specific tools
+#     └── agent_y/
+#         ├── agent_y.py
+#         ├── __init__.py
+#         └── tools/

@@ -1,0 +1,45 @@
+{
+  "welcomeMessage": "Welcome to LegisLink Pro",
+  "tagline": "The future of legal automation",
+  "greeting": "Hello, {name}!",
+  "nav": {
+    "dashboard": "Dashboard",
+    "generate_document": "Generate Document",
+    "legal_search": "Legal Search",
+    "clients": "Clients"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome to the main dashboard of LegisLink Pro.",
+    "generate_card": {
+      "title": "Generate Document",
+      "description": "Create a new contract or legal document.",
+      "button": "Start"
+    },
+    "search_card": {
+      "title": "Legal Search",
+      "description": "Search the legal knowledge base.",
+      "button": "Search"
+    },
+    "cases_card": {
+      "title": "My Cases",
+      "description": "View and manage your active cases.",
+      "button": "View Cases"
+    }
+  },
+  "document_generation": {
+    "title": "Document Generation",
+    "initial_prompt": "Welcome to the document generation assistant. What type of document do you need to create today? For example, you can ask for: 'a non-disclosure agreement' or 'a service agreement'.",
+    "placeholder": "Describe the document you need..."
+  },
+  "legal_search": {
+    "title": "Legal Search (RAG)",
+    "initial_prompt": "Welcome to the legal search assistant. You can ask questions about the knowledge base. For example: 'what are the requirements for a lease agreement?'",
+    "placeholder": "Enter your legal query..."
+  },
+  "client_management": {
+    "title": "Client Management (CRM)",
+    "initial_prompt": "Welcome to the CRM assistant. You can manage clients and cases. Examples: 'create client name:John Doe email:john@example.com', 'find client email:john@example.com', 'create case for john@example.com title:Contract Review'",
+    "placeholder": "Enter your CRM command..."
+  }
+} 

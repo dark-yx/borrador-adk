@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./legislink-pro
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./legislink-pro:/app
+    environment:
+      - FLASK_APP=${FLASK_APP}
+      - FLASK_ENV=${FLASK_ENV}
+      - SECRET_KEY=${SECRET_KEY}
+      - DB_HOST=db
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - REDIS_HOST=cache
+      - GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_APPLICATION_CREDENTIALS}
+      - GCP_PROJECT_ID=${GCP_PROJECT_ID}
+      - GCP_REGION=${GCP_REGION}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GOOGLE_DRIVE_FOLDER_ID=${GOOGLE_DRIVE_FOLDER_ID}
+      - VERTEX_AI_INDEX_ID=${VERTEX_AI_INDEX_ID}
+      - VERTEX_AI_INDEX_ENDPOINT_ID=${VERTEX_AI_INDEX_ENDPOINT_ID}
+    depends_on:
+      - db
+      - cache
+    networks:
+      - legislink_net
+
+  frontend:
+    build:
+      context: ./legislink-pro/frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    networks:
+      - legislink_net
+
+  db:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - legislink_net
+
+  cache:
+    image: redis:6.2-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - legislink_net
+
+volumes:
+  mysql_data:
+
+networks:
+  legislink_net:
+    driver: bridge 
